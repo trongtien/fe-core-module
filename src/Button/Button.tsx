@@ -1,25 +1,53 @@
-import { FC, MouseEventHandler } from 'react';
+import { PropsWithChildren, FC, ReactNode } from 'react';
 import ButtonMui from '@mui/material/Button';
+import clsx from 'clsx';
+import { SxProps, Theme } from '@mui/system';
 
-export interface IButtonProps{
-    text?: string;
+
+export interface ButtonProps{
     className?: string;
-    primary?: boolean;
     disabled?: boolean;
-    loading?: boolean;
-    size?: 'small' | "medium" | "large";
-    onClick?: MouseEventHandler<HTMLButtonElement>;
+    sx?: SxProps<Theme>;
+    onClick?(): void;
+    variant?: 'outlined' | 'contained'
+    endIcon?: ReactNode;
+    startIcon?: ReactNode;
 }
 
 
-const Button: FC<IButtonProps> = props => {
+export interface ButtonComponent extends PropsWithChildren<ButtonProps> {}
 
-    const { text, className} = props;
 
-    return (
-        <ButtonMui className={className} > {text} </ButtonMui>
-    )
+const Button: FC<ButtonComponent> = props => {
+
+    const { 
+        children, 
+        className, 
+        disabled = false, 
+        sx, 
+        onClick, 
+        variant='contained',
+        endIcon,
+        startIcon
+    } = props;
+
+    const ButtonMuiClassed = clsx("core-button", className);
+
+
+    const handleClick = () => {
+        onClick && onClick()
+    }
+
+    return  <ButtonMui
+                className={ButtonMuiClassed}
+                disabled={disabled}
+                sx={sx}
+                onClick={handleClick}
+                variant={variant}
+                endIcon={endIcon}
+            > 
+                {startIcon ? <span className="core-button-icon-start">{startIcon}</span> : null} {children} 
+            </ButtonMui>
 }
-
 
 export default Button;

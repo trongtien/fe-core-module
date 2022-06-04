@@ -1,65 +1,73 @@
 {
   "name": "@tienplt/fe-core-service",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.1",
+  "description": "React component core service",
   "main": "lib/index.js",
-  "module": "lib/index.esm.js",
-  "types": "lib/index.d.ts",
-  "dependencies": {},
-  "peerDependencies": {
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-scripts": "5.0.1",
-    "styled-components": "^5.3.5",
-    "@mui/material": "^5.8.2",
-    "@mui/styled-engine-sc": "^5.8.0",
-    "@types/styled-components": "^5.1.25"
+  "module": "lib/index.es.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "storybook:export": "build-storybook",
+    "build": "rollup -c",
+    "test": "jest"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trongtien/fe-core-module.git"
+  },
+  "keywords": [],
+  "author": "tienplt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trongtien/fe-core-module/issues"
+  },
+  "homepage": "https://github.com/trongtien/fe-core-module#readme",
   "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.8.2",
-    "@mui/styled-engine-sc": "^5.8.0",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.2",
-    "@testing-library/jest-dom": "^5.16.4",
+    "@storybook/react": "^6.5.6",
     "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/styled-components": "^5.1.25",
+    "@types/jest": "^28.1.0",
+    "@types/react": "^18.0.11",
+    "babel-jest": "^28.1.0",
+    "babel-loader": "^8.2.5",
+    "babel-preset-react-app": "^10.0.1",
+    "clsx": "^1.1.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "postcss": "^8.4.14",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-scripts": "5.0.1",
     "rollup": "^2.75.5",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.32.0",
-    "styled-components": "^5.3.5",
-    "web-vitals": "^2.1.4"
+    "sass-loader": "^13.0.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.3"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build-lib": "rollup -c",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "peerDependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "typescript": "^4.7.3",
+    "sass-loader": "^13.0.0",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.8.2",
+    "clsx": "^1.1.1"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "dependencies": {}
 }
