@@ -1,5 +1,6 @@
 import React, { FC, HTMLInputTypeAttribute, useEffect, useState, memo, useRef, ChangeEvent } from 'react';
 import clsx from 'clsx';
+import { SxProps, Theme } from '@mui/system';
 import FormLabel from '@mui/material/FormLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -17,6 +18,7 @@ export interface InputProps{
     onChange?(val: string): void;
     fullWidth?: boolean;
     disabled?: boolean;
+    sx?:SxProps<Theme>;
 }
 
 interface IObjectInput{
@@ -26,7 +28,7 @@ interface IObjectInput{
 
 const Input: FC<InputProps> = props => {
 
-    const { className, id, message = '', label, type='text', value, onChangeTimeOut, onChange, fullWidth, placeholder, disabled=false } = props;
+    const { className, id, message = '', label, type='text', value, onChangeTimeOut, onChange, fullWidth, placeholder, disabled=false, sx={} } = props;
 
     const timeOutCurrent = 500;
     const inputClassName = clsx("core-input", id ? `core-input-${id}` : "", className);
@@ -74,7 +76,13 @@ const Input: FC<InputProps> = props => {
     }
 
     return (
-        <CssInput fullWidth={fullWidth} className={inputClassName} id={id} disabled={disabled}>
+        <CssInput
+            fullWidth={fullWidth}
+            className={inputClassName}
+            id={id}
+            disabled={disabled}
+            sx={sx}
+        >
             {
                 !!label && 
                 <FormLabel 

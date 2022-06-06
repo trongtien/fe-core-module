@@ -4,6 +4,7 @@ import SelectMui, { SelectChangeEvent } from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
 import MenuItem from '@mui/material/MenuItem';
 import clsx from 'clsx';
+import { SxProps, Theme } from '@mui/system';
 import { CssSelect } from './styled';
 
 export interface OptionSelect{
@@ -23,6 +24,7 @@ export interface SelectProps{
   fullWidth?: boolean;
   options?: OptionSelect[];
   disabled?: boolean;
+  sx?:SxProps<Theme>;
 }
 
 interface IObjectSelect{
@@ -32,7 +34,7 @@ interface IObjectSelect{
 
 const Select: FC<SelectProps> = props => {
 
-  const { label, message = '', value, options = [], id, disabled = false, onChange, fullWidth=false } = props
+  const { label, message = '', value, options = [], id, disabled = false, onChange, fullWidth=false, sx={} } = props
   const timeOutCurrent = 500;
 
   const timer = useRef<ReturnType<typeof setTimeout>>();
@@ -89,7 +91,13 @@ const Select: FC<SelectProps> = props => {
   };
 
   return  (
-    <CssSelect disabled={disabled} fullWidth={fullWidth} id={id} className={id ? `core-select-outline-${id}` : 'core-select-outline'}> 
+    <CssSelect 
+      disabled={disabled}
+      fullWidth={fullWidth}
+      id={id}
+      className={id ? `core-select-outline-${id}` : 'core-select-outline'} 
+      sx={sx}
+    > 
       {
         !!label && 
         <FormLabel 
