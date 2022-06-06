@@ -1,6 +1,9 @@
 import React, { FC, HTMLInputTypeAttribute, useEffect, useState, memo, useRef, ChangeEvent } from 'react';
 import clsx from 'clsx';
-import TextField from "@mui/material/TextField";
+import FormLabel from '@mui/material/FormLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import FormHelperText from '@mui/material/FormHelperText';
+import { CssInput } from './styled';
 
 export interface InputProps{
     className?: string;
@@ -9,8 +12,11 @@ export interface InputProps{
     label?: string;
     type?: HTMLInputTypeAttribute;
     value?: string | number;
+    placeholder?: string;
     onChangeTimeOut?(val: string): void;
     onChange?(val: string): void;
+    fullWidth?: boolean;
+    disabled?: boolean;
 }
 
 interface IObjectInput{
@@ -20,7 +26,7 @@ interface IObjectInput{
 
 const Input: FC<InputProps> = props => {
 
-    const { className, id, message = '', label, type='text', value, onChangeTimeOut, onChange } = props;
+    const { className, id, message = '', label, type='text', value, onChangeTimeOut, onChange, fullWidth, placeholder, disabled=false } = props;
 
     const timeOutCurrent = 500;
     const inputClassName = clsx("core-input", id ? `core-input-${id}` : "", className);
@@ -68,16 +74,26 @@ const Input: FC<InputProps> = props => {
     }
 
     return (
-        <TextField 
-            id={id}
-            error={(objectDefaultData?.messageError ?? "")?.length > 0 ? true : false }
-            className={inputClassName}
-            helperText={objectDefaultData?.messageError ?? ''}
-            label={label}
-            type={type}
-            value={objectDefaultData.valueData}
-            onChange={onHandleChangeInput}
-        />
+        <CssInput fullWidth={fullWidth} className={inputClassName} id={id} disabled={disabled}>
+            {
+                !!label && 
+                <FormLabel 
+                    color={(objectDefaultData && objectDefaultData.messageError &&  objectDefaultData.messageError.length !== 0) ? "error" : undefined} 
+                    className="core-label"
+                >
+                    {label}
+                </FormLabel>
+            }
+            
+            <OutlinedInput 
+                placeholder={placeholder}
+                onChange={onHandleChangeInput}
+                value={objectDefaultData.valueData}
+                type={type}
+            />
+
+            <FormHelperText children={message} className='core-helper-text'/>
+        </CssInput>
     )
 }
 

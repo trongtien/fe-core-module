@@ -18,6 +18,10 @@ InputDefault.args = {
     value: "outlined"
 };
 
+export const InputNoLabel = Template.bind({});
+InputNoLabel.args = {
+    value: "outlined"
+};
 
 export const InputValidateError = Template.bind({});
 

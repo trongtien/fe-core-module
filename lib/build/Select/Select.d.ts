@@ -1,16 +1,20 @@
-import React, { HTMLInputTypeAttribute } from 'react';
-export interface InputProps {
+import { FC } from 'react';
+export interface OptionSelect {
+    label: string;
+    value: string;
+}
+export interface SelectProps {
     className?: string;
     id?: string;
     message?: string;
     label?: string;
-    type?: HTMLInputTypeAttribute;
     value?: string | number;
     placeholder?: string;
     onChangeTimeOut?(val: string): void;
     onChange?(val: string): void;
     fullWidth?: boolean;
+    options?: OptionSelect[];
     disabled?: boolean;
 }
-declare const _default: React.NamedExoticComponent<InputProps>;
-export default _default;
+declare const Select: FC<SelectProps>;
+export default Select;
