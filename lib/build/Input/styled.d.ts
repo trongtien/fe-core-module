@@ -1,4 +1,5 @@
 /// <reference types="react" />
+import { InputProps } from './type';
 export declare const CssInput: import("@emotion/styled").StyledComponent<{
     children?: import("react").ReactNode;
     classes?: Partial<import("@mui/material/FormControl").FormControlClasses> | undefined;
@@ -15,4 +16,4 @@ export declare const CssInput: import("@emotion/styled").StyledComponent<{
     variant?: "outlined" | "filled" | "standard" | undefined;
 } & import("@mui/material/OverridableComponent").CommonProps & Omit<Pick<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof import("react").HTMLAttributes<HTMLDivElement>> & {
     ref?: ((instance: HTMLDivElement | null) => void) | import("react").RefObject<HTMLDivElement> | null | undefined;
-}, "color" | "margin" | "children" | "disabled" | "sx" | "variant" | keyof import("@mui/material/OverridableComponent").CommonProps | "fullWidth" | "size" | "required" | "error" | "focused" | "hiddenLabel"> & import("@mui/system").MUIStyledCommonProps<import("@mui/material/styles").Theme>, {}, {}>;
+}, "color" | "margin" | "children" | "disabled" | "sx" | "variant" | keyof import("@mui/material/OverridableComponent").CommonProps | "fullWidth" | "size" | "required" | "error" | "focused" | "hiddenLabel"> & import("@mui/system").MUIStyledCommonProps<import("@mui/material/styles").Theme> & InputProps, {}, {}>;

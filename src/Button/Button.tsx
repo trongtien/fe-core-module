@@ -1,25 +1,10 @@
-import React, { PropsWithChildren, FC, ReactNode } from 'react';
+import React from 'react';
 import ButtonMui from '@mui/material/Button';
 import clsx from 'clsx';
-import { SxProps, Theme } from '@mui/system';
+import { ButtonComponent } from './type';
 
 
-export interface ButtonProps{
-    className?: string;
-    disabled?: boolean;
-    sx?: SxProps<Theme>;
-    onClick?(): void;
-    variant?: 'outlined' | 'contained'
-    endIcon?: ReactNode;
-    startIcon?: ReactNode;
-}
-
-
-export interface ButtonComponent extends PropsWithChildren<ButtonProps> {}
-
-
-const Button: FC<ButtonComponent> = props => {
-
+const Button: ButtonComponent = props => {
     const { 
         children, 
         className, 

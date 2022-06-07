@@ -1,32 +1,13 @@
-import React, { FC, HTMLInputTypeAttribute, useEffect, useState, memo, useRef, ChangeEvent } from 'react';
+import React, { FC, useEffect, useState, memo, useRef, ChangeEvent } from 'react';
 import clsx from 'clsx';
-import { SxProps, Theme } from '@mui/system';
 import FormLabel from '@mui/material/FormLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import FormHelperText from '@mui/material/FormHelperText';
 import { CssInput } from './styled';
+import { InputComponent, IObjectInput } from './type';
 
-export interface InputProps{
-    className?: string;
-    id?: string;
-    message?: string
-    label?: string;
-    type?: HTMLInputTypeAttribute;
-    value?: string | number;
-    placeholder?: string;
-    onChangeTimeOut?(val: string): void;
-    onChange?(val: string): void;
-    fullWidth?: boolean;
-    disabled?: boolean;
-    sx?:SxProps<Theme>;
-}
 
-interface IObjectInput{
-    valueData?: string | number;
-    messageError?: string;
-}
-
-const Input: FC<InputProps> = props => {
+const Input: InputComponent = props => {
 
     const { className, id, message = '', label, type='text', value, onChangeTimeOut, onChange, fullWidth, placeholder, disabled=false, sx={} } = props;
 
@@ -82,11 +63,11 @@ const Input: FC<InputProps> = props => {
             id={id}
             disabled={disabled}
             sx={sx}
+            message={objectDefaultData.messageError}
         >
             {
                 !!label && 
                 <FormLabel 
-                    color={(objectDefaultData && objectDefaultData.messageError &&  objectDefaultData.messageError.length !== 0) ? "error" : undefined} 
                     className="core-label"
                 >
                     {label}
